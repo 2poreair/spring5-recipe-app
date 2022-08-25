@@ -32,6 +32,8 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         this.unitOfMeasureRepository = unitOfMeasureRepository;
     }
 
+    /*Using transactional to avoid a lazy initialization causing an intermittent crash
+    * Makes all run in the same transactional boundaries.*/
     @Override
     @Transactional
     public void onApplicationEvent(ContextRefreshedEvent event) {
