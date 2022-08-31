@@ -18,10 +18,16 @@
   <div class="card p-3 mb-2 bg-secondary text-white" style="margin: 20px">
     <div class="card-heading">
       <!--/*thymesVar id="recipe" type="guru.springframework.domain.Recipe"*/-->
-      <H1 class="card-title"><a href="/"
-                                th:text="'< ' + ${recipe.description} + ':'"
-                                style="color: black">< Recipe Name:</a></H1>
-    </div>
+      <div class="row">
+        <div class="col">
+          <H1 class="card-title"><a href="/"
+                                    th:text="'< ' + ${recipe.description} + ':'"
+                                    style="color: black">< Recipe Name:</a></H1>
+        </div>
+        <div class="col" style="text-align: right">
+          <a class="btn btn-dark" href="/" th:href="'/recipe/' + ${recipe.id} + '/update/'">Edit</a>
+        </div>
+      </div>
     <div class="card-body rounded" style="background-color: cadetblue">
       <div class="row">
         <div class="col-md-3">
@@ -117,6 +123,11 @@
         <div class="row">
           <p th:text="${recipe.notes.getRecipeNotes()}">placeHolder</p>
         </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col" style="text-align: center">
+        <a class="btn btn-dark btn-lg" href="/" th:href="'/recipe/' + ${recipe.id} + '/update/'">Edit</a>
       </div>
     </div>
   </body>
