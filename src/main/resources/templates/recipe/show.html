@@ -33,6 +33,10 @@
         <div class="col-md-3">
           <h5>Categories:</h5>
         </div>
+        <div class="col-md-3 offset-6">
+          <img src="../../static/images/mdw7_allstar.png" class="img-thumbnail "
+            th:src="@{'/recipe/' + ${recipe.id} + '/recipeimage'}" width="200" height="200">
+        </div>
         <div class="col-md-9">
           <ul>
             <!--/*thymesVar id="recipe" type="guru.springframework.domain.Recipe"*/-->

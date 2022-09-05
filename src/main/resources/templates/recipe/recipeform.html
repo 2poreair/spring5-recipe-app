@@ -19,50 +19,56 @@
 <!--/*@thymesVar id="recipe" type="guru.springframework.domain.Recipe"*/-->
 <div class="container-fluid" style="margin-top: 20px;">
   <div class="row">
-    <div>
+    <div style="width: 80%">
       <form  th:object="${recipe}" th:action="@{/recipe/}"  method="post">
         <input type="hidden" th:field="*{id}"/>
-        <div class="panel-group">
-          <div class="card p-3 mb-2 bg-secondary text-white" style="margin: 20px">
-            <div class="card-heading">
+          <div class="card p-3 mb-4 bg-secondary text-white" style="margin: 20px;">
+            <div class="card-header">
               <a href="/" style="color: black"><h1 class="card-title">< New/Edit Recipe Information</h1></a>
-            </div><hr>
+            </div>
             <div class="card-body">
               <div class="row">
-                <div class="col-md-3 form-group">
+                <div class="col-md-6 form-group">
                   <label>Recipe Description:</label>
                   <input type="text" class="form-control" th:field="*{description}"/>
+                  <div class="row" style="margin-top: 10%">
+                    <div class="col-md-6 form-group">
+                      <label>Categories:</label>
+                    </div>
+                    <div class="col-md-6 form-group">
+                      <div class="radio">
+                        <label>
+                          <input type="checkbox" value=""/>
+                          Cat 1
+                        </label>
+                      </div>
+                      <div class="radio" th:remove="all">
+                        <label>
+                          <input type="checkbox" value=""/>
+                          Cat 2
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3 offset-3 form-group" style="text-align: center;">
+                  <img src="../../static/images/mdw7_allstar.png" class="img-thumbnail"
+                       th:src="@{'/recipe/' + ${recipe.id} + '/recipeimage'}" width="200" height="200">
+                  <div class="row d-flex justify-content-center">
+                    <a href="#" th:href="'/recipe/' + ${recipe.id} + '/image'" class="btn btn-dark col-md-6" style="margin-top: 5px">Change Image</a>
+                  </div>
                 </div>
               </div>
               <div class="row">
-                <div class="col-md-3 form-group">
-                  <label>Categories:</label>
-                </div>
-                <div class="col-md-9 form-group">
-                  <div class="radio">
-                    <label>
-                      <input type="checkbox" value=""/>
-                      Cat 1
-                    </label>
-                  </div>
-                  <div class="radio" th:remove="all">
-                    <label>
-                      <input type="checkbox" value=""/>
-                      Cat 2
-                    </label>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-3 form-group">
+                <div class="col-md-4 form-group">
                   <label>Prep Time:</label>
                   <input type="text" class="form-control" th:field="*{prepTime}"/>
                 </div>
-                <div class="col-md-3 form-group">
+                <div class="col-md-4 form-group">
                   <label>Cooktime:</label>
                   <input type="text" class="form-control" th:field="*{cookTime}"/>
                 </div>
-                <div class="col-md-3 form-group">
+                <div class="col-md-4 form-group">
                   <label>Difficulty:</label>
                   <select class="form-control" th:field="*{difficulty}">
                     <option th:each="difficultyValue: ${T(guru.springframework.domain.Difficulty).values()}"
@@ -72,15 +78,15 @@
                 </div>
               </div>
               <div class="row">
-                <div class="col-md-3 form-group">
+                <div class="col-md-4 form-group">
                   <label>Servings:</label>
                   <input type="text" class="form-control" th:field="*{servings}"/>
                 </div>
-                <div class="col-md-3 form-group">
+                <div class="col-md-4 form-group">
                   <label>Source:</label>
                   <input type="text" class="form-control" th:field="*{source}"/>
                 </div>
-                <div class="col-md-3 form-group">
+                <div class="col-md-4 form-group">
                   <label>URL:</label>
                   <input type="text" class="form-control" th:field="*{url}"/>
                 </div>
@@ -137,7 +143,6 @@
               </div>
             </div>
           </div>
-        </div>
         <div class="container-fluid" style="margin-top: 20px;">
           <div class="row">
             <div class="col" style="text-align: center;">
